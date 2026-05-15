@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -8,10 +9,11 @@ import Testimonials from '../components/Testimonials';
 import Experience from '../components/Experience';
 import FAQ from '../components/FAQ';
 import Contact from '../components/Contact';
-import BlogSection from '../components/BlogSection';
 import Footer from '../components/Footer';
 import StickyCTA from '../components/StickyCTA';
 import ScrollProgress from '../components/ScrollProgress';
+
+const BlogSection = lazy(() => import('../components/BlogSection'));
 
 export default function HomePage() {
   return (
@@ -25,7 +27,9 @@ export default function HomePage() {
       <Testimonials />
       <Experience />
       <FAQ />
-      <BlogSection />
+      <Suspense fallback={<div className="py-20 bg-teal-50/30" />}>
+        <BlogSection />
+      </Suspense>
       <Contact />
       <Footer />
       <StickyCTA />
