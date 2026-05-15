@@ -80,10 +80,10 @@ export default function Conditions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-6 lg:p-8 border border-teal-100 hover:border-teal-300 hover:shadow-xl transition-all duration-300"
+              className="group card-hover bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-6 lg:p-8 border border-teal-100 hover:border-lavender-300 transition-all duration-300"
             >
               <div className="flex items-start gap-4">
-                <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-lavender-500 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <condition.icon className="text-white" size={28} />
                 </div>
                 <div>

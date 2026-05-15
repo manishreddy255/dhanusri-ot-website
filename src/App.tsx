@@ -10,10 +10,14 @@ import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import StickyCTA from './components/StickyCTA';
+import ScrollProgress from './components/ScrollProgress';
+import FloatingElements from './components/FloatingElements';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
+      <ScrollProgress />
+      <FloatingElements />
       <Navbar />
       <Hero />
       <About />

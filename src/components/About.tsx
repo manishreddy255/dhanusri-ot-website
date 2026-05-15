@@ -85,9 +85,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:shadow-md hover:border-teal-200 transition-all"
+                className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-lavender-200"
               >
-                <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-100 to-lavender-100 rounded-xl flex items-center justify-center mb-4">
                   <feature.icon className="text-teal-600" size={24} />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>

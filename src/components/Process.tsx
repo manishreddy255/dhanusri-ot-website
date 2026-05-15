@@ -74,7 +74,7 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 lg:p-8 hover:bg-white/15 transition-all group"
+              className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 lg:p-8 hover:bg-white/15 hover:border-lavender-400/30 transition-all group"
             >
               <div className="absolute -top-4 -right-4 w-12 h-12 bg-teal-400 rounded-full flex items-center justify-center text-teal-900 font-bold text-sm shadow-lg">
                 {item.step}
