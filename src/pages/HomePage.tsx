@@ -10,7 +10,6 @@ import Experience from '../components/Experience';
 import FAQ from '../components/FAQ';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
-import StickyCTA from '../components/StickyCTA';
 
 const BlogSection = lazy(() => import('../components/BlogSection'));
 
@@ -31,7 +30,6 @@ export default function HomePage() {
       </Suspense>
       <Contact />
       <Footer />
-      <StickyCTA />
     </div>
   );
 }
