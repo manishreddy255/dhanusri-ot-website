@@ -1,11 +1,9 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Clock, ChevronRight, Search, BookOpen, ArrowLeft } from 'lucide-react';
 import { blogPosts } from '../blog/blogData';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import FloatingElements from '../components/FloatingElements';
 
 export default function BlogPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,16 +28,11 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-white relative">
-      <FloatingElements />
       <Navbar />
 
       <section className="pt-24 pb-16 bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700">
         <div className="max-w-7xl mx-auto section-padding">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="reveal">
             <Link
               to="/"
               className="inline-flex items-center gap-2 text-teal-200 hover:text-white mb-6 transition-colors"
@@ -54,7 +47,7 @@ export default function BlogPage() {
               Evidence-based guides and practical advice for parents and professionals
               supporting children with developmental needs.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -104,13 +97,11 @@ export default function BlogPage() {
               </button>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post, index) => (
-                <motion.div
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+              {filteredPosts.map((post) => (
+                <div
                   key={post.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className="reveal"
                 >
                   <Link
                     to={`/blog/${post.id}`}
@@ -134,7 +125,7 @@ export default function BlogPage() {
                       <ChevronRight size={16} className="text-teal-500" />
                     </div>
                   </Link>
-                </motion.div>
+                </div>
               ))}
             </div>
           )}

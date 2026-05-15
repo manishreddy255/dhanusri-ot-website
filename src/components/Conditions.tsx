@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Brain, Baby, Hand, Ear, Eye, Activity, UserRound, Lightbulb } from 'lucide-react';
 
 const conditions = [
@@ -56,12 +55,7 @@ export default function Conditions() {
   return (
     <section id="conditions" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto section-padding">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        <div className="reveal text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Specialisations</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Conditions <span className="gradient-text">I Treat</span>
@@ -70,17 +64,13 @@ export default function Conditions() {
             Evidence-based occupational therapy interventions for a wide range of paediatric 
             neurodevelopmental and sensory conditions. Online assessments and therapy available worldwide.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 stagger-children">
           {conditions.map((condition, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="group card-hover bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-6 lg:p-8 border border-teal-100 hover:border-teal-300 transition-all duration-300"
+              className="reveal group card-hover bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-6 lg:p-8 border border-teal-100 hover:border-teal-300 transition-all duration-300"
             >
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
@@ -101,16 +91,11 @@ export default function Conditions() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
+        <div className="reveal mt-12 text-center">
           <p className="text-gray-500 text-sm mb-4">
             Don&apos;t see your child&apos;s condition listed? I also treat hypotonia, dyspraxia, 
             feeding difficulties, and other developmental concerns.
@@ -121,7 +106,7 @@ export default function Conditions() {
           >
             Discuss Your Concerns
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

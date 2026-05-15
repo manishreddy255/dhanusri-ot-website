@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { ClipboardList, Video, FileText, Repeat, TrendingUp, HeartHandshake } from 'lucide-react';
 
 const steps = [
@@ -50,12 +49,7 @@ export default function Process() {
   return (
     <section id="process" className="py-20 lg:py-28 bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700 text-white">
       <div className="max-w-7xl mx-auto section-padding">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        <div className="reveal text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-300 font-semibold text-sm uppercase tracking-wider">How It Works</span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">
             Your Child&apos;s Journey to <span className="text-teal-300">Progress</span>
@@ -64,17 +58,13 @@ export default function Process() {
             A structured, evidence-based approach from first contact to meaningful outcomes. 
             Every step is designed to support your family and empower your child.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {steps.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 lg:p-8 hover:bg-white/15 transition-all group"
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+          {steps.map((item) => (
+            <div
+              key={item.step}
+              className="reveal relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 lg:p-8 hover:bg-white/15 transition-all group"
             >
               <div className="absolute -top-4 -right-4 w-12 h-12 bg-teal-400 rounded-full flex items-center justify-center text-teal-900 font-bold text-sm shadow-lg">
                 {item.step}
@@ -91,7 +81,7 @@ export default function Process() {
                 <span className="w-1.5 h-1.5 bg-teal-400 rounded-full" />
                 {item.duration}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

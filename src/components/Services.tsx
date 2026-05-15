@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Video, ClipboardCheck, Brain, Hand, Baby, FileText } from 'lucide-react';
 
 const services = [
@@ -50,31 +49,22 @@ export default function Services() {
   return (
     <section id="services" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto section-padding">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        <div className="reveal text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Services</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             How I Can <span className="gradient-text">Help</span>
           </h2>
           <p className="text-gray-600">
             Whether you are a parent seeking support for your child or a medical professional looking 
-            to refer a patient, I offer comprehensive online services tailored to each child's unique needs.
+            to refer a patient, I offer comprehensive online services tailored to each child&apos;s unique needs.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <motion.div
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+          {services.map((service) => (
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group card-hover bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-8 border border-teal-100 hover:border-teal-300 transition-all duration-300"
+              className="reveal group card-hover bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-8 border border-teal-100 hover:border-teal-300 transition-all duration-300"
             >
               <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <service.icon className="text-white" size={28} />
@@ -93,7 +83,7 @@ export default function Services() {
                   <span className="text-gray-600">{service.duration}</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

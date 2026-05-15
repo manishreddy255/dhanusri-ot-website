@@ -12,7 +12,6 @@ export default defineConfig({
           if (id.includes('node_modules')) {
             if (id.includes('react-router-dom')) return 'vendor';
             if (id.includes('react')) return 'vendor';
-            if (id.includes('framer-motion')) return 'framer-motion';
           }
           if (id.includes('src/blog/blogData.ts')) return 'blog-data';
         },

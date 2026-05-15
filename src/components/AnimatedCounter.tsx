@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useInView } from 'framer-motion';
+import { useInView } from '../hooks/useInView';
 
 interface AnimatedCounterProps {
   end: number;
@@ -17,8 +17,7 @@ export default function AnimatedCounter({
   className = '' 
 }: AnimatedCounterProps) {
   const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
+  const { ref, isInView } = useInView<HTMLSpanElement>();
   const hasAnimated = useRef(false);
 
   useEffect(() => {
@@ -28,7 +27,6 @@ export default function AnimatedCounter({
       const animate = () => {
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
         const easeOut = 1 - Math.pow(1 - progress, 3);
         setCount(Math.floor(easeOut * end));
         if (progress < 1) {

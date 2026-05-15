@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Clock, ChevronRight, BookOpen, ArrowRight } from 'lucide-react';
 import { blogPosts } from '../blog/blogData';
 
@@ -9,12 +8,7 @@ export default function BlogSection() {
   return (
     <section id="blog" className="py-20 lg:py-28 bg-teal-50/30">
       <div className="max-w-7xl mx-auto section-padding">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        <div className="reveal text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Resources</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Expert Articles for <span className="gradient-text">Parents & Professionals</span>
@@ -23,16 +17,13 @@ export default function BlogSection() {
             Evidence-based guides, research insights, and practical advice on paediatric occupational therapy,
             child development, and supporting children with special needs.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredPosts.map((post, index) => (
-            <motion.div
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+          {featuredPosts.map((post) => (
+            <div
               key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="reveal"
             >
               <Link
                 to={`/blog/${post.id}`}
@@ -56,16 +47,11 @@ export default function BlogSection() {
                   <ChevronRight size={16} className="text-teal-500" />
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
+        <div className="reveal text-center mt-12">
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full font-semibold transition-all"
@@ -74,7 +60,7 @@ export default function BlogSection() {
             View All {blogPosts.length} Articles
             <ArrowRight size={18} />
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

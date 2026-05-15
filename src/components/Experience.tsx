@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap, Award, MapPin } from 'lucide-react';
 
 const experiences = [
@@ -65,12 +64,7 @@ export default function Experience() {
   return (
     <section id="experience" className="py-20 lg:py-28 bg-teal-50/30">
       <div className="max-w-7xl mx-auto section-padding">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        <div className="reveal text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Background</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Experience & <span className="gradient-text">Qualifications</span>
@@ -79,18 +73,14 @@ export default function Experience() {
             A strong foundation in occupational therapy with extensive clinical experience across 
             multiple prestigious child development centres in India.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-8 stagger-children">
             {experiences.map((exp, index) => (
-              <motion.div
+              <div
                 key={`${exp.organisation}-${index}`}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-hover bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-100 hover:border-teal-200"
+                className="reveal card-hover bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-100 hover:border-teal-200"
               >
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
@@ -122,17 +112,12 @@ export default function Experience() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           <div className="space-y-8">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200"
-            >
+            <div className="reveal reveal-right card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
                   <Award className="text-teal-600" size={20} />
@@ -149,15 +134,9 @@ export default function Experience() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl p-6 text-white"
-            >
+            <div className="reveal reveal-right reveal-delay-1 bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl p-6 text-white">
               <h3 className="font-bold text-lg mb-4">Clinical Specialisations</h3>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -180,15 +159,9 @@ export default function Experience() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200"
-            >
+            <div className="reveal reveal-right reveal-delay-2 card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200">
               <h3 className="font-bold text-gray-900 mb-4">Assessment Tools</h3>
               <div className="grid grid-cols-2 gap-3">
                 {['Sensory Profile', 'PDMS-2', 'BOT-2', 'VMI', 'COPM', 'Goal-Attainment Scaling'].map((tool) => (
@@ -198,7 +171,7 @@ export default function Experience() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

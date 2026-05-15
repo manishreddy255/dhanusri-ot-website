@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Calendar } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Home', href: '/', type: 'route' },
-  { name: 'About', href: '/#about', type: 'hash' },
-  { name: 'Services', href: '/#services', type: 'hash' },
-  { name: 'Conditions', href: '/#conditions', type: 'hash' },
-  { name: 'Blog', href: '/blog', type: 'route' },
-  { name: 'Experience', href: '/#experience', type: 'hash' },
-  { name: 'Contact', href: '/#contact', type: 'hash' },
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/#about' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Conditions', href: '/#conditions' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Experience', href: '/#experience' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 export default function Navbar() {
@@ -25,10 +24,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string, type: string) => {
+  const handleNavClick = (href: string) => {
     setIsOpen(false);
-    if (type === 'hash' && isHomePage) {
-      const element = document.querySelector(href.replace('/', ''));
+    if (href.startsWith('/#') && isHomePage) {
+      const id = href.replace('/#', '');
+      const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
@@ -36,11 +36,8 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 nav-entrance transition-all duration-300 ${
         scrolled ? 'bg-white/90 backdrop-blur-lg shadow-md' : 'bg-transparent'
       }`}
     >
@@ -60,7 +57,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 to={link.href}
-                onClick={() => handleNavClick(link.href, link.type)}
+                onClick={() => handleNavClick(link.href)}
                 className={`text-sm font-medium transition-colors hover:text-teal-500 ${
                   scrolled ? 'text-gray-700' : 'text-white/90'
                 }`}
@@ -70,7 +67,7 @@ export default function Navbar() {
             ))}
             <Link
               to="/#contact"
-              onClick={() => handleNavClick('/#contact', 'hash')}
+              onClick={() => handleNavClick('/#contact')}
               className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all"
             >
               <Calendar size={16} />
@@ -81,43 +78,35 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-2 rounded-lg ${scrolled ? 'text-gray-800' : 'text-white'}`}
+            aria-label="Toggle menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t shadow-lg"
+      <div className={`mobile-menu lg:hidden bg-white border-t shadow-lg ${isOpen ? 'open' : ''}`}>
+        <div className="px-4 py-4 space-y-2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.href}
+              onClick={() => handleNavClick(link.href)}
+              className="block px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg font-medium transition-colors"
+            >
+              {link.name}
+            </Link>
+          ))}
+          <Link
+            to="/#contact"
+            onClick={() => handleNavClick('/#contact')}
+            className="flex items-center justify-center gap-2 bg-teal-500 text-white px-5 py-3 rounded-lg font-medium mt-4"
           >
-            <div className="px-4 py-4 space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  onClick={() => handleNavClick(link.href, link.type)}
-                  className="block px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg font-medium transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <Link
-                to="/#contact"
-                onClick={() => handleNavClick('/#contact', 'hash')}
-                className="flex items-center justify-center gap-2 bg-teal-500 text-white px-5 py-3 rounded-lg font-medium mt-4"
-              >
-                <Calendar size={16} />
-                Book Consultation
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+            <Calendar size={16} />
+            Book Consultation
+          </Link>
+        </div>
+      </div>
+    </nav>
   );
 }

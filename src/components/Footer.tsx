@@ -1,4 +1,5 @@
 import { Heart, Mail, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,13 +25,14 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#home" className="hover:text-teal-400 transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-teal-400 transition-colors">About</a></li>
-              <li><a href="#services" className="hover:text-teal-400 transition-colors">Services</a></li>
-              <li><a href="#conditions" className="hover:text-teal-400 transition-colors">Conditions Treated</a></li>
-              <li><a href="#testimonials" className="hover:text-teal-400 transition-colors">Testimonials</a></li>
-              <li><a href="#faq" className="hover:text-teal-400 transition-colors">FAQ</a></li>
-              <li><a href="#contact" className="hover:text-teal-400 transition-colors">Contact</a></li>
+              <li><a href="/" className="hover:text-teal-400 transition-colors">Home</a></li>
+              <li><a href="/#about" className="hover:text-teal-400 transition-colors">About</a></li>
+              <li><a href="/#services" className="hover:text-teal-400 transition-colors">Services</a></li>
+              <li><a href="/#conditions" className="hover:text-teal-400 transition-colors">Conditions Treated</a></li>
+              <li><Link to="/blog" className="hover:text-teal-400 transition-colors">Blog</Link></li>
+              <li><a href="/#testimonials" className="hover:text-teal-400 transition-colors">Testimonials</a></li>
+              <li><a href="/#faq" className="hover:text-teal-400 transition-colors">FAQ</a></li>
+              <li><a href="/#contact" className="hover:text-teal-400 transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -52,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-          <p> {currentYear} Sarikonda Dhanusri. All rights reserved.</p>
+          <p>&copy; {currentYear} Sarikonda Dhanusri. All rights reserved.</p>
           <p className="flex items-center gap-1">
             Made with <Heart size={14} className="text-teal-400 fill-teal-400" /> for better child health
           </p>

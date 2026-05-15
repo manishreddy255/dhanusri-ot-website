@@ -1,11 +1,9 @@
 import { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Clock, ArrowLeft, Calendar, Tag, Share2, BookOpen } from 'lucide-react';
 import { blogPosts } from '../blog/blogData';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import FloatingElements from '../components/FloatingElements';
 
 export default function BlogArticlePage() {
   const { articleId } = useParams<{ articleId: string }>();
@@ -25,7 +23,7 @@ export default function BlogArticlePage() {
         <div className="pt-32 pb-20 text-center">
           <BookOpen className="mx-auto text-teal-300 mb-4" size={48} />
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Article Not Found</h1>
-          <p className="text-gray-500 mb-6">The article you're looking for doesn't exist.</p>
+          <p className="text-gray-500 mb-6">The article you&apos;re looking for doesn&apos;t exist.</p>
           <Link to="/blog" className="text-teal-600 hover:text-teal-800 font-medium">
             Browse all articles
           </Link>
@@ -37,17 +35,11 @@ export default function BlogArticlePage() {
 
   return (
     <div className="min-h-screen bg-white relative">
-      <FloatingElements />
       <Navbar />
 
-      {/* Hero header for article */}
       <section className="pt-24 pb-12 bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700">
         <div className="max-w-4xl mx-auto section-padding">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="reveal">
             <Link
               to="/blog"
               className="inline-flex items-center gap-2 text-teal-200 hover:text-white mb-6 transition-colors"
@@ -71,24 +63,18 @@ export default function BlogArticlePage() {
                 {post.readTime}
               </span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Article content */}
       <section className="py-12 lg:py-16">
         <div className="max-w-4xl mx-auto section-padding">
-          <motion.article
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <article className="reveal">
             <div
               className="blog-content"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
 
-            {/* Tags */}
             <div className="mt-12 pt-8 border-t border-gray-200">
               <div className="flex items-center gap-2 mb-4">
                 <Tag size={16} className="text-teal-600" />
@@ -106,7 +92,6 @@ export default function BlogArticlePage() {
               </div>
             </div>
 
-            {/* Share */}
             <div className="mt-8 flex items-center gap-3">
               <span className="text-sm text-gray-500">Share this article:</span>
               <button
@@ -128,11 +113,10 @@ export default function BlogArticlePage() {
                 Share
               </button>
             </div>
-          </motion.article>
+          </article>
         </div>
       </section>
 
-      {/* Related articles */}
       {relatedPosts.length > 0 && (
         <section className="py-12 lg:py-16 bg-teal-50/30">
           <div className="max-w-7xl mx-auto section-padding">
@@ -158,14 +142,13 @@ export default function BlogArticlePage() {
         </section>
       )}
 
-      {/* CTA */}
       <section className="py-16 bg-gradient-to-br from-teal-600 to-teal-800">
         <div className="max-w-4xl mx-auto section-padding text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
             Have Questions After Reading?
           </h2>
           <p className="text-teal-100/80 mb-8 max-w-xl mx-auto">
-            Every child is unique. If you'd like to discuss your child's specific needs,
+            Every child is unique. If you&apos;d like to discuss your child&apos;s specific needs,
             book a free consultation with Sarikonda Dhanusri.
           </p>
           <Link

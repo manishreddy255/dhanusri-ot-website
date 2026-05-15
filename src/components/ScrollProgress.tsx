@@ -1,33 +1,29 @@
 import { useState, useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
 
 export default function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
+  const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 100);
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+      setProgress(scrollPercent);
+      setIsVisible(scrollTop > 100);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-1 z-[60] origin-left"
+    <div
+      className="fixed top-0 left-0 right-0 h-1 z-[60] origin-left transition-opacity duration-300"
       style={{
-        scaleX,
+        transform: `scaleX(${progress})`,
         background: '#14b8a6',
-        backgroundSize: '200% 100%',
         opacity: isVisible ? 1 : 0,
-        transition: 'opacity 0.3s ease',
       }}
     />
   );

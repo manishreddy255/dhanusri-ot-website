@@ -1,3 +1,4 @@
+import { useReveal } from '../hooks/useReveal';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -8,14 +9,16 @@ import Testimonials from '../components/Testimonials';
 import Experience from '../components/Experience';
 import FAQ from '../components/FAQ';
 import Contact from '../components/Contact';
+import BlogSection from '../components/BlogSection';
 import Footer from '../components/Footer';
-import FloatingElements from '../components/FloatingElements';
 import StickyCTA from '../components/StickyCTA';
+import ScrollProgress from '../components/ScrollProgress';
 
 export default function HomePage() {
+  useReveal();
+
   return (
     <div className="min-h-screen bg-white relative">
-      <FloatingElements />
       <Navbar />
       <Hero />
       <About />
@@ -25,9 +28,11 @@ export default function HomePage() {
       <Testimonials />
       <Experience />
       <FAQ />
+      <BlogSection />
       <Contact />
       <Footer />
       <StickyCTA />
+      <ScrollProgress />
     </div>
   );
 }

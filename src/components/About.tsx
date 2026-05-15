@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Award, Heart, Users, BookOpen } from 'lucide-react';
 
 const features = [
@@ -29,12 +28,7 @@ export default function About() {
     <section id="about" className="py-20 lg:py-28 bg-teal-50/50">
       <div className="max-w-7xl mx-auto section-padding">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="reveal reveal-left">
             <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">About Me</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-6">
               Dedicated to Helping Children{' '}
@@ -69,32 +63,22 @@ export default function About() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid sm:grid-cols-2 gap-6"
-          >
-            {features.map((feature, index) => (
-              <motion.div
+          <div className="grid sm:grid-cols-2 gap-6 stagger-children">
+            {features.map((feature) => (
+              <div
                 key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200"
+                className="reveal card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200"
               >
                 <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
                   <feature.icon className="text-teal-600" size={24} />
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-sm text-gray-600">{feature.description}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

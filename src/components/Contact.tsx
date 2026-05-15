@@ -1,11 +1,7 @@
 import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
 import { Send, Mail, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
-import confetti from 'canvas-confetti';
 
-// EmailJS credentials
-// Get your Template ID and Public Key from https://dashboard.emailjs.com
 const EMAILJS_SERVICE_ID = 'service_g607u4q';
 const EMAILJS_TEMPLATE_ID = 'template_tmvqlrm';
 const EMAILJS_PUBLIC_KEY = 'HqhHp3dZjRH5WZzDm';
@@ -41,16 +37,6 @@ export default function Contact() {
         EMAILJS_PUBLIC_KEY
       );
       setSubmitStatus('success');
-      
-      // Trigger confetti celebration
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#14b8a6', '#2dd4bf', '#0d9488', '#99f6e4', '#0f766e'],
-        disableForReducedMotion: true,
-      });
-      
       setFormData({
         name: '',
         email: '',
@@ -71,12 +57,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto section-padding">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        <div className="reveal text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Book a <span className="gradient-text">Consultation</span>
@@ -85,16 +66,10 @@ export default function Contact() {
             Reach out for online assessments, video consultations, or professional referrals. 
             I typically respond within 24 hours.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid lg:grid-cols-5 gap-12">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2 space-y-8"
-          >
+          <div className="reveal reveal-left lg:col-span-2 space-y-8">
             <div className="bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl p-8 text-white">
               <h3 className="text-xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-5">
@@ -140,15 +115,9 @@ export default function Contact() {
                 and allied health professionals.
               </p>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-3"
-          >
+          <div className="reveal reveal-right lg:col-span-3">
             <div className="bg-white rounded-2xl border border-gray-200 p-6 lg:p-8 shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Send a Message</h3>
               
@@ -276,31 +245,21 @@ export default function Contact() {
                 </button>
 
                 {submitStatus === 'success' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 text-green-600 bg-green-50 p-4 rounded-xl"
-                  >
+                  <div className="flex items-center gap-2 text-green-600 bg-green-50 p-4 rounded-xl animate-pulse">
                     <CheckCircle size={20} />
                     <span>Message sent successfully! I will get back to you within 24 hours.</span>
-                  </motion.div>
+                  </div>
                 )}
 
                 {submitStatus === 'error' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 text-red-600 bg-red-50 p-4 rounded-xl"
-                  >
+                  <div className="flex items-center gap-2 text-red-600 bg-red-50 p-4 rounded-xl">
                     <AlertCircle size={20} />
                     <span>Something went wrong. Please try again or send an email directly.</span>
-                  </motion.div>
+                  </div>
                 )}
-
-
               </form>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
