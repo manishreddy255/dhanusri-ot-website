@@ -66,7 +66,7 @@ export default function Services() {
               key={service.title}
               className="group card-hover bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-8 border border-teal-100 hover:border-teal-300 transition-all duration-300"
             >
-              <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-6">
                 <service.icon className="text-white" size={28} />
               </div>
 

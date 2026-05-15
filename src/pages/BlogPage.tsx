@@ -85,7 +85,7 @@ export default function BlogPage() {
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border ${categoryColors[post.category] || 'bg-gray-50 text-gray-700 border-gray-200'}`}>
                     {post.category}
                   </span>
-                  <h2 className="text-lg font-bold text-gray-900 mt-3 mb-2 group-hover:text-teal-700 transition-colors line-clamp-2">
+                  <h2 className="text-lg font-bold text-gray-900 mt-3 mb-2 line-clamp-2">
                     {post.title}
                   </h2>
                   <p className="text-sm text-gray-600 line-clamp-3 mb-4">{post.excerpt}</p>
@@ -95,7 +95,7 @@ export default function BlogPage() {
                       <Clock size={12} />
                       {post.readTime}
                     </span>
-                    <ChevronRight size={14} className="ml-auto text-teal-400 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight size={14} className="ml-auto text-teal-400" />
                   </div>
                 </div>
               </Link>

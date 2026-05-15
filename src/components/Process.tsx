@@ -70,7 +70,7 @@ export default function Process() {
                 {item.step}
               </div>
 
-              <div className="w-14 h-14 bg-teal-400/20 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <div className="w-14 h-14 bg-teal-400/20 rounded-xl flex items-center justify-center mb-5">
                 <item.icon className="text-teal-300" size={28} />
               </div>
 

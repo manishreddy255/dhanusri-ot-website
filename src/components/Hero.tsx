@@ -4,10 +4,9 @@ import AnimatedCounter from './AnimatedCounter';
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700">
-      {/* Abstract shapes - soft and calming */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-teal-400/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-300/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-teal-400/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-teal-300/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full blur-3xl" />
       </div>
 
@@ -34,16 +33,16 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-teal-800 px-8 py-4 rounded-full font-semibold hover:bg-teal-50 transition-colors shadow-lg group"
+                className="inline-flex items-center justify-center gap-2 bg-white text-teal-800 px-8 py-4 rounded-full font-semibold hover:bg-teal-50 shadow-lg"
               >
-                <Calendar size={20} className="group-hover:rotate-12 transition-transform" />
+                <Calendar size={20} />
                 Book a Consultation
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center gap-2 bg-teal-700/50 backdrop-blur-sm border border-teal-500/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-teal-700/70 transition-colors group"
+                className="inline-flex items-center justify-center gap-2 bg-teal-700/50 backdrop-blur-sm border border-teal-500/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-teal-700/70"
               >
-                <Stethoscope size={20} className="group-hover:scale-110 transition-transform" />
+                <Stethoscope size={20} />
                 Explore Services
               </a>
             </div>
@@ -64,12 +63,10 @@ export default function Hero() {
             </div>
           </div>
 
-          <div >
+          <div className="relative hidden lg:block">
             <div className="relative w-full aspect-square max-w-lg mx-auto">
-              {/* Main circle */}
               <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-teal-600/20 rounded-full" />
               
-              {/* Avatar placeholder */}
               <div className="absolute inset-8 bg-gradient-to-br from-teal-100 to-white rounded-full flex items-center justify-center shadow-2xl">
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center">
@@ -80,7 +77,6 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Floating badges */}
               <div className="absolute top-10 right-0 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center gap-3">
                 <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
                   <Video className="text-teal-600" size={20} />
@@ -91,7 +87,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="absolute bottom-16 left-0 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center gap-3-slow">
+              <div className="absolute bottom-16 left-0 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center gap-3">
                 <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
                   <Stethoscope className="text-teal-600" size={20} />
                 </div>
@@ -107,7 +103,7 @@ export default function Hero() {
 
       <a
         href="#about"
-        className="absolute bottom-8 left-1/2 text-white/60 hover:text-white transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white"
         aria-label="Scroll down"
       >
         <ArrowDown size={24} />

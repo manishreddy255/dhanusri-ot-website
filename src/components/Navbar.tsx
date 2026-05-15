@@ -68,7 +68,7 @@ export default function Navbar() {
             <Link
               to="/#contact"
               onClick={() => handleNavClick('/#contact')}
-              className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all"
+              className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-medium"
             >
               <Calendar size={16} />
               Book Consultation
@@ -85,28 +85,31 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className={`mobile-menu lg:hidden bg-white border-t shadow-lg ${isOpen ? 'open' : ''}`}>
-        <div className="px-4 py-4 space-y-2">
-          {navLinks.map((link) => (
+      {/* Mobile menu — no animation, instant show/hide */}
+      {isOpen && (
+        <div className="lg:hidden bg-white border-t shadow-lg">
+          <div className="px-4 py-4 space-y-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="block px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg font-medium"
+              >
+                {link.name}
+              </Link>
+            ))}
             <Link
-              key={link.name}
-              to={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="block px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg font-medium transition-colors"
+              to="/#contact"
+              onClick={() => handleNavClick('/#contact')}
+              className="flex items-center justify-center gap-2 bg-teal-500 text-white px-5 py-3 rounded-lg font-medium mt-4"
             >
-              {link.name}
+              <Calendar size={16} />
+              Book Consultation
             </Link>
-          ))}
-          <Link
-            to="/#contact"
-            onClick={() => handleNavClick('/#contact')}
-            className="flex items-center justify-center gap-2 bg-teal-500 text-white px-5 py-3 rounded-lg font-medium mt-4"
-          >
-            <Calendar size={16} />
-            Book Consultation
-          </Link>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

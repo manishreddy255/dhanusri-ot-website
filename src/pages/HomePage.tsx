@@ -11,7 +11,6 @@ import FAQ from '../components/FAQ';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import StickyCTA from '../components/StickyCTA';
-import ScrollProgress from '../components/ScrollProgress';
 
 const BlogSection = lazy(() => import('../components/BlogSection'));
 
@@ -33,7 +32,6 @@ export default function HomePage() {
       <Contact />
       <Footer />
       <StickyCTA />
-      <ScrollProgress />
     </div>
   );
 }

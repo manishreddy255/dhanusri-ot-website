@@ -4,7 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+html, body {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -26,9 +27,18 @@ body {
   @apply px-4 sm:px-6 lg:px-8 xl:px-12;
 }
 
-/* Card hover lift effect */
+/* Card hover - shadow only, no lift */
 .card-hover {
-  @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
+  @apply transition-shadow duration-200 hover:shadow-xl;
+}
+
+/* Hide scrollbar for category pills */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Custom scrollbar - soft teal */
@@ -47,57 +57,6 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #0d9488;
-}
-
-/* Mobile menu transition */
-.mobile-menu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
-}
-
-.mobile-menu.open {
-  max-height: 600px;
-  opacity: 1;
-}
-
-/* FAQ accordion */
-.faq-answer {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s ease;
-}
-
-.faq-answer.open {
-  grid-template-rows: 1fr;
-}
-
-.faq-answer > div {
-  overflow: hidden;
-}
-
-/* Sticky CTA transitions */
-.sticky-cta-enter {
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.sticky-cta-enter.visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.fab-enter {
-  transform: scale(0);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.fab-enter.visible {
-  transform: scale(1);
-  opacity: 1;
 }
 
 /* Blog article typography */
@@ -179,13 +138,4 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
