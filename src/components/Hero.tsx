@@ -1,4 +1,4 @@
-import { Video, Calendar, Stethoscope, BookOpen, MessageCircle } from 'lucide-react';
+import { Video, Stethoscope, BookOpen, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const WHATSAPP_NUMBER = '919876543210'; // ← Replace with Dhanusri's WhatsApp number
@@ -40,21 +40,14 @@ export default function Hero() {
                 href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3.5 rounded-full font-semibold shadow-lg"
+                className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg"
               >
                 <MessageCircle size={20} />
                 Book on WhatsApp
               </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-teal-800 px-6 py-3.5 rounded-full font-semibold hover:bg-teal-50 shadow-lg"
-              >
-                <Calendar size={20} />
-                Send a Message
-              </a>
               <Link
                 to="/blog"
-                className="inline-flex items-center justify-center gap-2 bg-teal-700/50 backdrop-blur-sm border border-teal-500/30 text-white px-6 py-3.5 rounded-full font-semibold hover:bg-teal-700/70"
+                className="inline-flex items-center justify-center gap-2 bg-teal-700/50 backdrop-blur-sm border border-teal-500/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-teal-700/70"
               >
                 <BookOpen size={20} />
                 Read Blog
