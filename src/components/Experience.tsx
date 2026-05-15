@@ -90,7 +90,7 @@ export default function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="card-hover bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-100 hover:border-lavender-200"
+                className="card-hover bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-100 hover:border-teal-200"
               >
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
@@ -131,7 +131,7 @@ export default function Experience() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-lavender-200"
+              className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200"
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
@@ -187,7 +187,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-lavender-200"
+              className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200"
             >
               <h3 className="font-bold text-gray-900 mb-4">Assessment Tools</h3>
               <div className="grid grid-cols-2 gap-3">

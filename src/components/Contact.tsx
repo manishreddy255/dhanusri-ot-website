@@ -47,7 +47,7 @@ export default function Contact() {
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#14b8a6', '#a855f7', '#2dd4bf', '#c084fc', '#0d9488'],
+        colors: ['#14b8a6', '#2dd4bf', '#0d9488', '#99f6e4', '#0f766e'],
         disableForReducedMotion: true,
       });
       
@@ -79,7 +79,7 @@ export default function Contact() {
         >
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
-            Book a <span className="gradient-text">Free Consultation</span>
+            Book a <span className="gradient-text">Consultation</span>
           </h2>
           <p className="text-gray-600">
             Reach out for online assessments, video consultations, or professional referrals. 
@@ -95,7 +95,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-2 space-y-8"
           >
-            <div className="bg-gradient-to-br from-teal-500 via-teal-600 to-lavender-600 rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl p-8 text-white">
               <h3 className="text-xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
@@ -260,7 +260,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-lavender-600 hover:from-teal-700 hover:to-lavender-700 disabled:opacity-60 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl"
+                  className="w-full flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-700 disabled:bg-teal-400 text-white px-8 py-4 rounded-xl font-semibold transition-all"
                 >
                   {isSubmitting ? (
                     <>

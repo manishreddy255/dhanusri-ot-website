@@ -33,7 +33,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto section-padding">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-lavender-500 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center">
               <span className="text-white font-bold text-lg">SD</span>
             </div>
             <span className={`font-semibold text-lg hidden sm:block ${scrolled ? 'text-gray-800' : 'text-white'}`}>

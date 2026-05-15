@@ -75,7 +75,7 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="border border-gray-200 rounded-xl overflow-hidden hover:border-lavender-200 transition-colors"
+              className="border border-gray-200 rounded-xl overflow-hidden hover:border-teal-200 transition-colors"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -113,7 +113,7 @@ export default function FAQ() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-50 to-lavender-50 rounded-full px-6 py-3 text-teal-700">
+          <div className="inline-flex items-center gap-2 bg-teal-50 rounded-full px-6 py-3 text-teal-700">
             <MessageCircleQuestion size={18} />
             <span className="text-sm font-medium">Still have questions? <a href="#contact" className="underline hover:text-teal-900">Send a message</a></span>
           </div>

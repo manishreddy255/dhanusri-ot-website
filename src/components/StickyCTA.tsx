@@ -28,7 +28,7 @@ export default function StickyCTA() {
             <div className="bg-white border-t border-gray-200 px-4 py-3 shadow-lg">
               <a
                 href="#contact"
-                className="flex items-center justify-center gap-2 bg-gradient-to-r from-teal-600 to-lavender-600 text-white w-full py-3 rounded-xl font-semibold text-sm"
+                className="flex items-center justify-center gap-2 bg-teal-600 text-white w-full py-3 rounded-xl font-semibold text-sm"
               >
                 <Send size={16} />
                 Book Free Consultation
@@ -49,7 +49,7 @@ export default function StickyCTA() {
           >
             <a
               href="#contact"
-              className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-teal-500 to-lavender-500 hover:from-teal-600 hover:to-lavender-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all group"
+              className="flex items-center justify-center w-14 h-14 bg-teal-600 hover:bg-teal-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all group"
               aria-label="Book a consultation"
             >
               <MessageSquare size={24} className="group-hover:scale-110 transition-transform" />
