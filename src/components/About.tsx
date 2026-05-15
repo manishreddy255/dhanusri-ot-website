@@ -28,7 +28,7 @@ export default function About() {
     <section id="about" className="py-20 lg:py-28 bg-teal-50/50">
       <div className="max-w-7xl mx-auto section-padding">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="reveal reveal-left">
+          <div >
             <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">About Me</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-6">
               Dedicated to Helping Children{' '}
@@ -65,11 +65,11 @@ export default function About() {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6 stagger-children">
+          <div className="grid sm:grid-cols-2 gap-6 ">
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="reveal card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200"
+                className="card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200"
               >
                 <div className="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4">
                   <feature.icon className="text-teal-600" size={24} />

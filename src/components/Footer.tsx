@@ -25,14 +25,14 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="/" className="hover:text-teal-400 transition-colors">Home</a></li>
-              <li><a href="/#about" className="hover:text-teal-400 transition-colors">About</a></li>
-              <li><a href="/#services" className="hover:text-teal-400 transition-colors">Services</a></li>
-              <li><a href="/#conditions" className="hover:text-teal-400 transition-colors">Conditions Treated</a></li>
+              <li><Link to="/" className="hover:text-teal-400 transition-colors">Home</Link></li>
+              <li><Link to="/#about" className="hover:text-teal-400 transition-colors">About</Link></li>
+              <li><Link to="/#services" className="hover:text-teal-400 transition-colors">Services</Link></li>
+              <li><Link to="/#conditions" className="hover:text-teal-400 transition-colors">Conditions Treated</Link></li>
               <li><Link to="/blog" className="hover:text-teal-400 transition-colors">Blog</Link></li>
-              <li><a href="/#testimonials" className="hover:text-teal-400 transition-colors">Testimonials</a></li>
-              <li><a href="/#faq" className="hover:text-teal-400 transition-colors">FAQ</a></li>
-              <li><a href="/#contact" className="hover:text-teal-400 transition-colors">Contact</a></li>
+              <li><Link to="/#testimonials" className="hover:text-teal-400 transition-colors">Testimonials</Link></li>
+              <li><Link to="/#faq" className="hover:text-teal-400 transition-colors">FAQ</Link></li>
+              <li><Link to="/#contact" className="hover:text-teal-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
 

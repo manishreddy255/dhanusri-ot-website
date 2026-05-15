@@ -64,7 +64,7 @@ export default function Experience() {
   return (
     <section id="experience" className="py-20 lg:py-28 bg-teal-50/30">
       <div className="max-w-7xl mx-auto section-padding">
-        <div className="reveal text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Background</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Experience & <span className="gradient-text">Qualifications</span>
@@ -76,11 +76,11 @@ export default function Experience() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2 space-y-8 stagger-children">
+          <div className="lg:col-span-2 space-y-8 ">
             {experiences.map((exp, index) => (
               <div
                 key={`${exp.organisation}-${index}`}
-                className="reveal card-hover bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-100 hover:border-teal-200"
+                className="card-hover bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-100 hover:border-teal-200"
               >
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${
@@ -117,7 +117,7 @@ export default function Experience() {
           </div>
 
           <div className="space-y-8">
-            <div className="reveal reveal-right card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200">
+            <div className=" card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
                   <Award className="text-teal-600" size={20} />
@@ -136,7 +136,7 @@ export default function Experience() {
               </ul>
             </div>
 
-            <div className="reveal reveal-right reveal-delay-1 bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl p-6 text-white">
+            <div className=" bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl p-6 text-white">
               <h3 className="font-bold text-lg mb-4">Clinical Specialisations</h3>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -161,7 +161,7 @@ export default function Experience() {
               </div>
             </div>
 
-            <div className="reveal reveal-right reveal-delay-2 card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200">
+            <div className=" card-hover bg-white rounded-2xl p-6 shadow-sm border border-teal-100 hover:border-teal-200">
               <h3 className="font-bold text-gray-900 mb-4">Assessment Tools</h3>
               <div className="grid grid-cols-2 gap-3">
                 {['Sensory Profile', 'PDMS-2', 'BOT-2', 'VMI', 'COPM', 'Goal-Attainment Scaling'].map((tool) => (

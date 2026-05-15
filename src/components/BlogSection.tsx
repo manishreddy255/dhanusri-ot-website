@@ -8,7 +8,7 @@ export default function BlogSection() {
   return (
     <section id="blog" className="py-20 lg:py-28 bg-teal-50/30">
       <div className="max-w-7xl mx-auto section-padding">
-        <div className="reveal text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Resources</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Expert Articles for <span className="gradient-text">Parents & Professionals</span>
@@ -19,11 +19,11 @@ export default function BlogSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {featuredPosts.map((post) => (
             <div
               key={post.id}
-              className="reveal"
+              
             >
               <Link
                 to={`/blog/${post.id}`}
@@ -51,7 +51,7 @@ export default function BlogSection() {
           ))}
         </div>
 
-        <div className="reveal text-center mt-12">
+        <div className="text-center mt-12">
           <Link
             to="/blog"
             className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-full font-semibold transition-all"

@@ -49,7 +49,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="py-20 lg:py-28 bg-teal-50/30">
       <div className="max-w-7xl mx-auto section-padding">
-        <div className="reveal text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Testimonials</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             What Families & Professionals <span className="gradient-text">Say</span>
@@ -60,11 +60,11 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="reveal card-hover bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-100 hover:border-teal-200 relative"
+              className="card-hover bg-white rounded-2xl p-6 lg:p-8 shadow-sm border border-teal-100 hover:border-teal-200 relative"
             >
               <Quote className="absolute top-6 right-6 text-teal-100" size={32} />
               

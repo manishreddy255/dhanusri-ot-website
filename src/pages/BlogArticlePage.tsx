@@ -39,7 +39,7 @@ export default function BlogArticlePage() {
 
       <section className="pt-24 pb-12 bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700">
         <div className="max-w-4xl mx-auto section-padding">
-          <div className="reveal">
+          <div >
             <Link
               to="/blog"
               className="inline-flex items-center gap-2 text-teal-200 hover:text-white mb-6 transition-colors"
@@ -69,7 +69,7 @@ export default function BlogArticlePage() {
 
       <section className="py-12 lg:py-16">
         <div className="max-w-4xl mx-auto section-padding">
-          <article className="reveal">
+          <article >
             <div
               className="blog-content"
               dangerouslySetInnerHTML={{ __html: post.content }}

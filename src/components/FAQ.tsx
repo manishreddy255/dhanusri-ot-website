@@ -50,7 +50,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-20 lg:py-28 bg-white">
       <div className="max-w-4xl mx-auto section-padding">
-        <div className="reveal text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">FAQ</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Frequently Asked <span className="gradient-text">Questions</span>
@@ -61,11 +61,11 @@ export default function FAQ() {
           </p>
         </div>
 
-        <div className="space-y-4 stagger-children">
+        <div className="space-y-4 ">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="reveal border border-gray-200 rounded-xl overflow-hidden hover:border-teal-200 transition-colors"
+              className="border border-gray-200 rounded-xl overflow-hidden hover:border-teal-200 transition-colors"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -90,7 +90,7 @@ export default function FAQ() {
           ))}
         </div>
 
-        <div className="reveal mt-12 text-center">
+        <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-2 bg-teal-50 rounded-full px-6 py-3 text-teal-700">
             <MessageCircleQuestion size={18} />
             <span className="text-sm font-medium">Still have questions? <a href="#contact" className="underline hover:text-teal-900">Send a message</a></span>

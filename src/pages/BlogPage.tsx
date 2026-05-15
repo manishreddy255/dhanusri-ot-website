@@ -1,12 +1,11 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, ChevronRight, Search, BookOpen, ArrowLeft } from 'lucide-react';
+import { Clock, ChevronRight, ArrowLeft } from 'lucide-react';
 import { blogPosts } from '../blog/blogData';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function BlogPage() {
-  const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const categories = useMemo(() => {
@@ -15,122 +14,95 @@ export default function BlogPage() {
   }, []);
 
   const filteredPosts = useMemo(() => {
-    return blogPosts.filter((post) => {
-      const matchesSearch =
-        searchTerm === '' ||
-        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        post.keywords.some((k) => k.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchTerm, selectedCategory]);
+    if (selectedCategory === 'All') return blogPosts;
+    return blogPosts.filter((post) => post.category === selectedCategory);
+  }, [selectedCategory]);
+
+  const categoryColors: Record<string, string> = {
+    'Parent Guide': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    'Conditions': 'bg-rose-50 text-rose-700 border-rose-200',
+    'Planning': 'bg-violet-50 text-violet-700 border-violet-200',
+    'Practical Skills': 'bg-amber-50 text-amber-700 border-amber-200',
+    'Future/Tech': 'bg-sky-50 text-sky-700 border-sky-200',
+  };
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="pt-24 pb-16 bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700">
+      {/* Simple header */}
+      <div className="pt-20 pb-8 bg-gradient-to-br from-teal-900 via-teal-800 to-teal-700">
         <div className="max-w-7xl mx-auto section-padding">
-          <div className="reveal">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-teal-200 hover:text-white mb-6 transition-colors"
-            >
-              <ArrowLeft size={18} />
-              Back to Home
-            </Link>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Expert Articles & Resources
-            </h1>
-            <p className="text-teal-100/80 text-lg max-w-2xl">
-              Evidence-based guides and practical advice for parents and professionals
-              supporting children with developmental needs.
-            </p>
-          </div>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-teal-200 hover:text-white mb-4 transition-colors text-sm"
+          >
+            <ArrowLeft size={16} />
+            Back to Home
+          </Link>
+          <h1 className="text-3xl sm:text-4xl font-bold text-white">Blog</h1>
+          <p className="text-teal-100/80 mt-2">{blogPosts.length} articles on paediatric occupational therapy</p>
         </div>
-      </section>
+      </div>
 
-      <section className="py-8 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto section-padding">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-              <input
-                type="text"
-                placeholder="Search articles..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
-              />
-            </div>
-            <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
-                    selectedCategory === cat
-                      ? 'bg-teal-600 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-700'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 lg:py-16 bg-teal-50/30 min-h-[50vh]">
-        <div className="max-w-7xl mx-auto section-padding">
-          {filteredPosts.length === 0 ? (
-            <div className="text-center py-16">
-              <BookOpen className="mx-auto text-teal-300 mb-4" size={48} />
-              <p className="text-gray-500 text-lg">No articles found matching your search.</p>
+      {/* Category pills */}
+      <div className="sticky top-16 z-30 bg-white border-b border-gray-100 shadow-sm">
+        <div className="max-w-7xl mx-auto section-padding py-4">
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            {categories.map((cat) => (
               <button
-                onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
-                className="mt-4 text-teal-600 hover:text-teal-800 font-medium"
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
+                  selectedCategory === cat
+                    ? 'bg-teal-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-700'
+                }`}
               >
-                Clear filters
+                {cat}
+                {cat !== 'All' && (
+                  <span className="ml-2 text-xs opacity-70">
+                    {blogPosts.filter((p) => p.category === cat).length}
+                  </span>
+                )}
               </button>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
-              {filteredPosts.map((post) => (
-                <div
-                  key={post.id}
-                  className="reveal"
-                >
-                  <Link
-                    to={`/blog/${post.id}`}
-                    className="card-hover block bg-white rounded-2xl p-6 border border-teal-100 h-full"
-                  >
-                    <span className="inline-block px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-semibold mb-4">
-                      {post.category}
-                    </span>
-                    <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 hover:text-teal-700 transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
-                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                      <div className="flex items-center gap-3 text-xs text-gray-500">
-                        <span>{post.date}</span>
-                        <span className="flex items-center gap-1">
-                          <Clock size={12} />
-                          {post.readTime}
-                        </span>
-                      </div>
-                      <ChevronRight size={16} className="text-teal-500" />
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          )}
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
+
+      {/* Articles grid */}
+      <div className="py-10 bg-gray-50/50">
+        <div className="max-w-7xl mx-auto section-padding">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredPosts.map((post) => (
+              <Link
+                key={post.id}
+                to={`/blog/${post.id}`}
+                className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:border-teal-300 transition-all"
+              >
+                <div className="p-6">
+                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border ${categoryColors[post.category] || 'bg-gray-50 text-gray-700 border-gray-200'}`}>
+                    {post.category}
+                  </span>
+                  <h2 className="text-lg font-bold text-gray-900 mt-3 mb-2 group-hover:text-teal-700 transition-colors line-clamp-2">
+                    {post.title}
+                  </h2>
+                  <p className="text-sm text-gray-600 line-clamp-3 mb-4">{post.excerpt}</p>
+                  <div className="flex items-center gap-3 text-xs text-gray-400 pt-4 border-t border-gray-100">
+                    <span>{post.date}</span>
+                    <span className="flex items-center gap-1">
+                      <Clock size={12} />
+                      {post.readTime}
+                    </span>
+                    <ChevronRight size={14} className="ml-auto text-teal-400 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <Footer />
     </div>

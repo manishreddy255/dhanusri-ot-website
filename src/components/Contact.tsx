@@ -57,7 +57,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto section-padding">
-        <div className="reveal text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Book a <span className="gradient-text">Consultation</span>
@@ -69,7 +69,7 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-12">
-          <div className="reveal reveal-left lg:col-span-2 space-y-8">
+          <div className=" lg:col-span-2 space-y-8">
             <div className="bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl p-8 text-white">
               <h3 className="text-xl font-bold mb-6">Contact Information</h3>
               <div className="space-y-5">
@@ -117,7 +117,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <div className="reveal reveal-right lg:col-span-3">
+          <div className=" lg:col-span-3">
             <div className="bg-white rounded-2xl border border-gray-200 p-6 lg:p-8 shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Send a Message</h3>
               

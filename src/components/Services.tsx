@@ -49,7 +49,7 @@ export default function Services() {
   return (
     <section id="services" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto section-padding">
-        <div className="reveal text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Services</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             How I Can <span className="gradient-text">Help</span>
@@ -60,11 +60,11 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {services.map((service) => (
             <div
               key={service.title}
-              className="reveal group card-hover bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-8 border border-teal-100 hover:border-teal-300 transition-all duration-300"
+              className="group card-hover bg-gradient-to-br from-teal-50/50 to-white rounded-2xl p-8 border border-teal-100 hover:border-teal-300 transition-all duration-300"
             >
               <div className="w-14 h-14 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <service.icon className="text-white" size={28} />

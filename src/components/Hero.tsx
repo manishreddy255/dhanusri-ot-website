@@ -13,9 +13,9 @@ export default function Hero() {
 
       <div className="relative max-w-7xl mx-auto section-padding py-20 lg:py-0">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="reveal">
+          <div>
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
-              <span className="w-2 h-2 bg-teal-300 rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-teal-300 rounded-full" />
               <span className="text-teal-100 text-sm font-medium">Accepting New Clients</span>
             </div>
 
@@ -64,10 +64,10 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative hidden lg:block reveal reveal-delay-2">
+          <div >
             <div className="relative w-full aspect-square max-w-lg mx-auto">
               {/* Main circle */}
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-teal-600/20 rounded-full animate-float-badge" />
+              <div className="absolute inset-0 bg-gradient-to-br from-teal-400/20 to-teal-600/20 rounded-full" />
               
               {/* Avatar placeholder */}
               <div className="absolute inset-8 bg-gradient-to-br from-teal-100 to-white rounded-full flex items-center justify-center shadow-2xl">
@@ -81,7 +81,7 @@ export default function Hero() {
               </div>
 
               {/* Floating badges */}
-              <div className="absolute top-10 right-0 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center gap-3 animate-float-badge">
+              <div className="absolute top-10 right-0 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center gap-3">
                 <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
                   <Video className="text-teal-600" size={20} />
                 </div>
@@ -91,7 +91,7 @@ export default function Hero() {
                 </div>
               </div>
 
-              <div className="absolute bottom-16 left-0 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center gap-3 animate-float-badge-slow">
+              <div className="absolute bottom-16 left-0 bg-white rounded-xl px-4 py-3 shadow-lg flex items-center gap-3-slow">
                 <div className="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
                   <Stethoscope className="text-teal-600" size={20} />
                 </div>
@@ -107,7 +107,7 @@ export default function Hero() {
 
       <a
         href="#about"
-        className="absolute bottom-8 left-1/2 text-white/60 hover:text-white transition-colors animate-bounce-down"
+        className="absolute bottom-8 left-1/2 text-white/60 hover:text-white transition-colors"
         aria-label="Scroll down"
       >
         <ArrowDown size={24} />

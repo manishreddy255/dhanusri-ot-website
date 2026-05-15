@@ -1,4 +1,3 @@
-import { useReveal } from '../hooks/useReveal';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -15,8 +14,6 @@ import StickyCTA from '../components/StickyCTA';
 import ScrollProgress from '../components/ScrollProgress';
 
 export default function HomePage() {
-  useReveal();
-
   return (
     <div className="min-h-screen bg-white relative">
       <Navbar />
