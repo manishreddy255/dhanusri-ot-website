@@ -3,10 +3,11 @@ import { motion } from 'framer-motion';
 import { Send, Mail, Phone, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
-// TODO: Replace these with your actual EmailJS credentials
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+// EmailJS credentials
+// Get your Template ID and Public Key from https://dashboard.emailjs.com
+const EMAILJS_SERVICE_ID = 'service_g607u4q';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // <-- Replace after creating template
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';    // <-- Replace from Account > General
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
