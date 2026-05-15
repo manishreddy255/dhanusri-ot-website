@@ -6,8 +6,8 @@ import emailjs from '@emailjs/browser';
 // EmailJS credentials
 // Get your Template ID and Public Key from https://dashboard.emailjs.com
 const EMAILJS_SERVICE_ID = 'service_g607u4q';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // <-- Replace after creating template
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';    // <-- Replace from Account > General
+const EMAILJS_TEMPLATE_ID = 'template_tmvqlrm';
+const EMAILJS_PUBLIC_KEY = 'HqhHp3dZjRH5WZzDm';
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -33,38 +33,22 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      // Check if placeholders are still set
-      if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID') {
-        // Simulate success for demo if not configured
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          userType: '',
-          serviceType: '',
-          childAge: '',
-          message: '',
-        });
-      } else {
-        await emailjs.sendForm(
-          EMAILJS_SERVICE_ID,
-          EMAILJS_TEMPLATE_ID,
-          formRef.current!,
-          EMAILJS_PUBLIC_KEY
-        );
-        setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          userType: '',
-          serviceType: '',
-          childAge: '',
-          message: '',
-        });
-      }
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        EMAILJS_PUBLIC_KEY
+      );
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        userType: '',
+        serviceType: '',
+        childAge: '',
+        message: '',
+      });
     } catch (error) {
       console.error('EmailJS Error:', error);
       setSubmitStatus('error');
@@ -313,12 +297,7 @@ export default function Contact() {
                   </motion.div>
                 )}
 
-                {EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' && (
-                  <div className="text-sm text-amber-600 bg-amber-50 p-4 rounded-xl">
-                    <strong>Note:</strong> EmailJS is not configured yet. The form will simulate sending. 
-                    Please see the SETUP.md file for instructions on configuring EmailJS.
-                  </div>
-                )}
+
               </form>
             </div>
           </motion.div>
