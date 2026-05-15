@@ -7,6 +7,7 @@ import Process from './components/Process';
 import Testimonials from './components/Testimonials';
 import Experience from './components/Experience';
 import FAQ from './components/FAQ';
+import BlogSection from './components/BlogSection';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import StickyCTA from './components/StickyCTA';
@@ -27,6 +28,7 @@ function App() {
       <Testimonials />
       <Experience />
       <FAQ />
+      <BlogSection />
       <Contact />
       <Footer />
       <StickyCTA />
