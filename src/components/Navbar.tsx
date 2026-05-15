@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
+  { name: 'Conditions', href: '#conditions' },
   { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -53,11 +54,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="tel:+916301185981"
+              href="#contact"
               className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all"
             >
-              <Phone size={16} />
-              Call Now
+              <Calendar size={16} />
+              Book Consultation
             </a>
           </div>
 
@@ -90,11 +91,12 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="tel:+916301185981"
+                href="#contact"
+                onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2 bg-teal-500 text-white px-5 py-3 rounded-lg font-medium mt-4"
               >
-                <Phone size={16} />
-                Call Now
+                <Calendar size={16} />
+                Book Consultation
               </a>
             </div>
           </motion.div>

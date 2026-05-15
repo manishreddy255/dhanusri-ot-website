@@ -2,9 +2,14 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Services from './components/Services';
+import Conditions from './components/Conditions';
+import Process from './components/Process';
+import Testimonials from './components/Testimonials';
 import Experience from './components/Experience';
+import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import StickyCTA from './components/StickyCTA';
 
 function App() {
   return (
@@ -13,9 +18,14 @@ function App() {
       <Hero />
       <About />
       <Services />
+      <Conditions />
+      <Process />
+      <Testimonials />
       <Experience />
+      <FAQ />
       <Contact />
       <Footer />
+      <StickyCTA />
     </div>
   );
 }

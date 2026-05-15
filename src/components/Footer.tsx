@@ -1,4 +1,4 @@
-import { Heart, Phone, Mail, MapPin } from 'lucide-react';
+import { Heart, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,7 +16,8 @@ export default function Footer() {
             </div>
             <p className="text-sm leading-relaxed">
               Professional paediatric occupational therapy services providing online assessments 
-              and video consultations for children with developmental needs.
+              and video consultations for children with developmental needs. Evidence-based, 
+              family-centred care from Hyderabad, India — serving families worldwide.
             </p>
           </div>
 
@@ -26,7 +27,9 @@ export default function Footer() {
               <li><a href="#home" className="hover:text-teal-400 transition-colors">Home</a></li>
               <li><a href="#about" className="hover:text-teal-400 transition-colors">About</a></li>
               <li><a href="#services" className="hover:text-teal-400 transition-colors">Services</a></li>
-              <li><a href="#experience" className="hover:text-teal-400 transition-colors">Experience</a></li>
+              <li><a href="#conditions" className="hover:text-teal-400 transition-colors">Conditions Treated</a></li>
+              <li><a href="#testimonials" className="hover:text-teal-400 transition-colors">Testimonials</a></li>
+              <li><a href="#faq" className="hover:text-teal-400 transition-colors">FAQ</a></li>
               <li><a href="#contact" className="hover:text-teal-400 transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -35,10 +38,6 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Contact</h4>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3">
-                <Phone size={16} className="text-teal-400" />
-                <a href="tel:+916301185981" className="hover:text-teal-400 transition-colors">+91 63011 85981</a>
-              </li>
-              <li className="flex items-center gap-3">
                 <Mail size={16} className="text-teal-400" />
                 <a href="mailto:sarikondadhanusri58678@gmail.com" className="hover:text-teal-400 transition-colors">
                   sarikondadhanusri58678@gmail.com
@@ -46,7 +45,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-teal-400 mt-0.5" />
-                <span>Hyderabad, India</span>
+                <span>Hyderabad, India<br /><span className="text-gray-500">Serving clients worldwide via video consultation</span></span>
               </li>
             </ul>
           </div>

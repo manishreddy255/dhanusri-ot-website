@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, Phone, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, Mail, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 // EmailJS credentials
@@ -95,17 +95,6 @@ export default function Contact() {
                     <p className="text-sm text-teal-100">Email</p>
                     <a href="mailto:sarikondadhanusri58678@gmail.com" className="font-medium hover:text-teal-200 transition-colors">
                       sarikondadhanusri58678@gmail.com
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-teal-100">Phone</p>
-                    <a href="tel:+916301185981" className="font-medium hover:text-teal-200 transition-colors">
-                      +91 63011 85981
                     </a>
                   </div>
                 </div>
@@ -293,7 +282,7 @@ export default function Contact() {
                     className="flex items-center gap-2 text-red-600 bg-red-50 p-4 rounded-xl"
                   >
                     <AlertCircle size={20} />
-                    <span>Something went wrong. Please try again or contact me directly via phone/email.</span>
+                    <span>Something went wrong. Please try again or send an email directly.</span>
                   </motion.div>
                 )}
 
