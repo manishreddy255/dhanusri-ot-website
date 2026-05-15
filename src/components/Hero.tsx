@@ -1,5 +1,10 @@
-import { Video, Calendar, Stethoscope, BookOpen } from 'lucide-react';
+import { Video, Calendar, Stethoscope, BookOpen, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+const WHATSAPP_NUMBER = '919876543210'; // ← Replace with Dhanusri's WhatsApp number
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  'Hi, I found your website and would like to book a consultation for my child. Please let me know your availability.'
+);
 
 export default function Hero() {
   return (
@@ -10,7 +15,7 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto section-padding py-20 lg:py-0">
+      <div className="relative max-w-7xl mx-auto section-padding py-24 lg:py-0">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
@@ -25,36 +30,38 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg text-teal-100/80 mb-8 max-w-xl leading-relaxed">
-              Specialised online assessments and video consultations for children with ASD, 
+              Online assessments and video consultations for children with ASD, 
               sensory processing disorders, cerebral palsy, and developmental delays. 
-              Evidence-based, family-centred care from an experienced OT.
+              Based in Hyderabad, serving families worldwide.
             </p>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-10">
               <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-teal-800 px-8 py-4 rounded-full font-semibold hover:bg-teal-50 shadow-lg"
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3.5 rounded-full font-semibold shadow-lg"
               >
-                <Calendar size={20} />
-                Book a Consultation
+                <MessageCircle size={20} />
+                Book on WhatsApp
               </a>
               <a
-                href="#services"
-                className="inline-flex items-center justify-center gap-2 bg-teal-700/50 backdrop-blur-sm border border-teal-500/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-teal-700/70"
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 bg-white text-teal-800 px-6 py-3.5 rounded-full font-semibold hover:bg-teal-50 shadow-lg"
               >
-                <Stethoscope size={20} />
-                Explore Services
+                <Calendar size={20} />
+                Send a Message
               </a>
               <Link
                 to="/blog"
-                className="inline-flex items-center justify-center gap-2 bg-teal-700/50 backdrop-blur-sm border border-teal-500/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-teal-700/70"
+                className="inline-flex items-center justify-center gap-2 bg-teal-700/50 backdrop-blur-sm border border-teal-500/30 text-white px-6 py-3.5 rounded-full font-semibold hover:bg-teal-700/70"
               >
                 <BookOpen size={20} />
-                Blog
+                Read Blog
               </Link>
             </div>
 
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-6 max-w-md">
               <div>
                 <div className="text-2xl sm:text-3xl font-bold text-white">4+</div>
                 <div className="text-sm text-teal-200/70">Years Experience</div>

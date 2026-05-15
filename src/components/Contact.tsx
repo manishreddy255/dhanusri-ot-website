@@ -1,26 +1,23 @@
 import { useState, useRef } from 'react';
-import { Send, Mail, MapPin, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, Mail, MapPin, Clock, CheckCircle, AlertCircle, MessageCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 const EMAILJS_SERVICE_ID = 'service_g607u4q';
 const EMAILJS_TEMPLATE_ID = 'template_tmvqlrm';
 const EMAILJS_PUBLIC_KEY = 'HqhHp3dZjRH5WZzDm';
 
+const WHATSAPP_NUMBER = '919876543210'; // ← Replace with Dhanusri's WhatsApp number
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  'Hi, I found your website and would like to book a consultation for my child. Please let me know your availability.'
+);
+
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    userType: '',
-    serviceType: '',
-    childAge: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -30,22 +27,9 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      await emailjs.sendForm(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        formRef.current!,
-        EMAILJS_PUBLIC_KEY
-      );
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current!, EMAILJS_PUBLIC_KEY);
       setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        userType: '',
-        serviceType: '',
-        childAge: '',
-        message: '',
-      });
+      setFormData({ name: '', phone: '', message: '' });
     } catch (error) {
       console.error('EmailJS Error:', error);
       setSubmitStatus('error');
@@ -57,29 +41,42 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto section-padding">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-teal-600 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-3 mb-4">
             Book a <span className="gradient-text">Consultation</span>
           </h2>
           <p className="text-gray-600">
-            Reach out for online assessments, video consultations, or professional referrals. 
-            I typically respond within 24 hours.
+            Reach out via WhatsApp for fastest response, or send a message below. 
+            I typically reply within a few hours.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
-          <div className=" lg:col-span-2 space-y-8">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {/* Quick Contact Options */}
+          <div className="space-y-6">
             <div className="bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl p-8 text-white">
-              <h3 className="text-xl font-bold mb-6">Contact Information</h3>
-              <div className="space-y-5">
+              <h3 className="text-xl font-bold mb-6">Quick Contact</h3>
+              
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-white text-teal-800 px-6 py-4 rounded-xl font-semibold mb-5 hover:bg-green-50 transition-colors"
+              >
+                <MessageCircle size={22} className="text-green-600" />
+                Chat on WhatsApp
+                <span className="ml-auto text-xs font-normal text-gray-500">Fastest response</span>
+              </a>
+
+              <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
                     <Mail size={20} />
                   </div>
                   <div>
                     <p className="text-sm text-teal-100">Email</p>
-                    <a href="mailto:sarikondadhanusri58678@gmail.com" className="font-medium hover:text-teal-200 transition-colors">
+                    <a href="mailto:sarikondadhanusri58678@gmail.com" className="font-medium hover:text-teal-200">
                       sarikondadhanusri58678@gmail.com
                     </a>
                   </div>
@@ -91,7 +88,7 @@ export default function Contact() {
                   <div>
                     <p className="text-sm text-teal-100">Location</p>
                     <p className="font-medium">Hyderabad, India</p>
-                    <p className="text-sm text-teal-200/70">Serving clients worldwide via video</p>
+                    <p className="text-sm text-teal-200/70">Online sessions worldwide</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -106,111 +103,38 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
-            <div className="bg-teal-50 rounded-2xl p-6 border border-teal-100">
-              <h4 className="font-semibold text-gray-900 mb-2">For Medical Professionals</h4>
-              <p className="text-sm text-gray-600">
-                Looking to refer a patient? Use the contact form and select &quot;Medical Professional&quot; 
-                as your user type. I accept referrals from paediatricians, neurologists, psychologists, 
-                and allied health professionals.
-              </p>
-            </div>
           </div>
 
-          <div className=" lg:col-span-3">
+          {/* Simple Form */}
+          <div>
             <div className="bg-white rounded-2xl border border-gray-200 p-6 lg:p-8 shadow-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Send a Message</h3>
               
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Email *</label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
-                      placeholder="you@example.com"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
+                    placeholder="Your name"
+                  />
                 </div>
 
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
-                      placeholder="+91 ..."
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">I am a... *</label>
-                    <select
-                      name="userType"
-                      required
-                      value={formData.userType}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all bg-white"
-                    >
-                      <option value="">Select one</option>
-                      <option value="parent">Parent / Caregiver</option>
-                      <option value="professional">Medical Professional</option>
-                      <option value="school">School / Institution</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Service Needed *</label>
-                    <select
-                      name="serviceType"
-                      required
-                      value={formData.serviceType}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all bg-white"
-                    >
-                      <option value="">Select one</option>
-                      <option value="assessment">Online Assessment</option>
-                      <option value="consultation">Video Consultation</option>
-                      <option value="sensory">Sensory Integration Therapy</option>
-                      <option value="fine_motor">Fine Motor / ADL Training</option>
-                      <option value="early">Early Intervention</option>
-                      <option value="iep">IEP/IFSP Development</option>
-                      <option value="referral">Professional Referral</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Child&apos;s Age (if applicable)</label>
-                    <input
-                      type="text"
-                      name="childAge"
-                      value={formData.childAge}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
-                      placeholder="e.g., 5 years"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone / WhatsApp *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all"
+                    placeholder="+91 ..."
+                  />
                 </div>
 
                 <div>
@@ -222,7 +146,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-200 outline-none transition-all resize-none"
-                    placeholder="Please describe your concerns or requirements..."
+                    placeholder="Tell me about your child and concerns..."
                   />
                 </div>
 
@@ -245,16 +169,16 @@ export default function Contact() {
                 </button>
 
                 {submitStatus === 'success' && (
-                  <div className="flex items-center gap-2 text-green-600 bg-green-50 p-4 rounded-xl animate-pulse">
+                  <div className="flex items-center gap-2 text-green-600 bg-green-50 p-4 rounded-xl">
                     <CheckCircle size={20} />
-                    <span>Message sent successfully! I will get back to you within 24 hours.</span>
+                    <span>Message sent! I will get back to you within a few hours.</span>
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
                   <div className="flex items-center gap-2 text-red-600 bg-red-50 p-4 rounded-xl">
                     <AlertCircle size={20} />
-                    <span>Something went wrong. Please try again or send an email directly.</span>
+                    <span>Something went wrong. Please try WhatsApp instead.</span>
                   </div>
                 )}
               </form>

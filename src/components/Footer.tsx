@@ -1,5 +1,10 @@
-import { Heart, Mail, MapPin } from 'lucide-react';
+import { Heart, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+const WHATSAPP_NUMBER = '919876543210'; // ← Replace with Dhanusri's WhatsApp number
+const WHATSAPP_MESSAGE = encodeURIComponent(
+  'Hi, I found your website and would like to book a consultation for my child.'
+);
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,7 +23,7 @@ export default function Footer() {
             <p className="text-sm leading-relaxed">
               Professional paediatric occupational therapy services providing online assessments 
               and video consultations for children with developmental needs. Evidence-based, 
-              family-centred care from Hyderabad, India — serving families worldwide.
+              family-centred care from Hyderabad, India.
             </p>
           </div>
 
@@ -26,19 +31,27 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li><Link to="/" className="hover:text-teal-400 transition-colors">Home</Link></li>
-              <li><Link to="/#about" className="hover:text-teal-400 transition-colors">About</Link></li>
-              <li><Link to="/#services" className="hover:text-teal-400 transition-colors">Services</Link></li>
-              <li><Link to="/#conditions" className="hover:text-teal-400 transition-colors">Conditions Treated</Link></li>
+              <li><a href="/#about" className="hover:text-teal-400 transition-colors">About</a></li>
+              <li><a href="/#services" className="hover:text-teal-400 transition-colors">Services</a></li>
               <li><Link to="/blog" className="hover:text-teal-400 transition-colors">Blog</Link></li>
-              <li><Link to="/#testimonials" className="hover:text-teal-400 transition-colors">Testimonials</Link></li>
-              <li><Link to="/#faq" className="hover:text-teal-400 transition-colors">FAQ</Link></li>
-              <li><Link to="/#contact" className="hover:text-teal-400 transition-colors">Contact</Link></li>
+              <li><a href="/#contact" className="hover:text-teal-400 transition-colors">Contact</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-semibold mb-4">Contact</h4>
             <ul className="space-y-3 text-sm">
+              <li>
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 hover:text-green-400 transition-colors"
+                >
+                  <MessageCircle size={16} className="text-green-400" />
+                  WhatsApp
+                </a>
+              </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-teal-400" />
                 <a href="mailto:sarikondadhanusri58678@gmail.com" className="hover:text-teal-400 transition-colors">
@@ -47,7 +60,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="text-teal-400 mt-0.5" />
-                <span>Hyderabad, India<br /><span className="text-gray-500">Serving clients worldwide via video consultation</span></span>
+                <span>Hyderabad, India<br /><span className="text-gray-500">Online sessions worldwide</span></span>
               </li>
             </ul>
           </div>
