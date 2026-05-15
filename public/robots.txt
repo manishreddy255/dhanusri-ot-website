@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://manishreddy255.github.io/dhanusri-ot-website/sitemap.xml
+Sitemap: https://dhanusriot.com/sitemap.xml
