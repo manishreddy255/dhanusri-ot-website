@@ -1,6 +1,5 @@
 import { Video, Calendar, Stethoscope, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import AnimatedCounter from './AnimatedCounter';
 
 export default function Hero() {
   return (
@@ -56,18 +55,18 @@ export default function Hero() {
             </div>
 
             <div className="grid grid-cols-3 gap-6">
-              {[
-                { number: 4, suffix: '+', label: 'Years Experience' },
-                { number: 200, suffix: '+', label: 'Children Helped' },
-                { number: 100, suffix: '%', label: 'Online Available' },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <div className="text-2xl sm:text-3xl font-bold text-white">
-                    <AnimatedCounter end={stat.number} suffix={stat.suffix} />
-                  </div>
-                  <div className="text-sm text-teal-200/70">{stat.label}</div>
-                </div>
-              ))}
+              <div>
+                <div className="text-2xl sm:text-3xl font-bold text-white">4+</div>
+                <div className="text-sm text-teal-200/70">Years Experience</div>
+              </div>
+              <div>
+                <div className="text-2xl sm:text-3xl font-bold text-white">200+</div>
+                <div className="text-sm text-teal-200/70">Children Helped</div>
+              </div>
+              <div>
+                <div className="text-2xl sm:text-3xl font-bold text-white">100%</div>
+                <div className="text-sm text-teal-200/70">Online Available</div>
+              </div>
             </div>
           </div>
 
