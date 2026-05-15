@@ -1,26 +1,39 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Conditions', href: '#conditions' },
-  { name: 'Blog', href: '#blog' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/', type: 'route' },
+  { name: 'About', href: '/#about', type: 'hash' },
+  { name: 'Services', href: '/#services', type: 'hash' },
+  { name: 'Conditions', href: '/#conditions', type: 'hash' },
+  { name: 'Blog', href: '/blog', type: 'route' },
+  { name: 'Experience', href: '/#experience', type: 'hash' },
+  { name: 'Contact', href: '/#contact', type: 'hash' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (href: string, type: string) => {
+    setIsOpen(false);
+    if (type === 'hash' && isHomePage) {
+      const element = document.querySelector(href.replace('/', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <motion.nav
@@ -33,34 +46,36 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto section-padding">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <a href="#home" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center">
               <span className="text-white font-bold text-lg">SD</span>
             </div>
             <span className={`font-semibold text-lg hidden sm:block ${scrolled ? 'text-gray-800' : 'text-white'}`}>
               Dhanusri OT
             </span>
-          </a>
+          </Link>
 
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
+                onClick={() => handleNavClick(link.href, link.type)}
                 className={`text-sm font-medium transition-colors hover:text-teal-500 ${
                   scrolled ? 'text-gray-700' : 'text-white/90'
                 }`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              to="/#contact"
+              onClick={() => handleNavClick('/#contact', 'hash')}
               className="flex items-center gap-2 bg-teal-500 hover:bg-teal-600 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all"
             >
               <Calendar size={16} />
               Book Consultation
-            </a>
+            </Link>
           </div>
 
           <button
@@ -82,23 +97,23 @@ export default function Navbar() {
           >
             <div className="px-4 py-4 space-y-2">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  to={link.href}
+                  onClick={() => handleNavClick(link.href, link.type)}
                   className="block px-4 py-3 text-gray-700 hover:bg-teal-50 hover:text-teal-600 rounded-lg font-medium transition-colors"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
+              <Link
+                to="/#contact"
+                onClick={() => handleNavClick('/#contact', 'hash')}
                 className="flex items-center justify-center gap-2 bg-teal-500 text-white px-5 py-3 rounded-lg font-medium mt-4"
               >
                 <Calendar size={16} />
                 Book Consultation
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

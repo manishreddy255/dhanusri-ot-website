@@ -1,38 +1,37 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Conditions from './components/Conditions';
-import Process from './components/Process';
-import Testimonials from './components/Testimonials';
-import Experience from './components/Experience';
-import FAQ from './components/FAQ';
-import BlogSection from './components/BlogSection';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import StickyCTA from './components/StickyCTA';
-import ScrollProgress from './components/ScrollProgress';
-import FloatingElements from './components/FloatingElements';
+import { lazy, Suspense } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop';
+import LoadingSpinner from './components/LoadingSpinner';
+import HomePage from './pages/HomePage';
+
+// Lazy load blog pages for better performance
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogArticlePage = lazy(() => import('./pages/BlogArticlePage'));
 
 function App() {
   return (
-    <div className="min-h-screen bg-white relative">
-      <ScrollProgress />
-      <FloatingElements />
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Conditions />
-      <Process />
-      <Testimonials />
-      <Experience />
-      <FAQ />
-      <BlogSection />
-      <Contact />
-      <Footer />
-      <StickyCTA />
-    </div>
+    <HashRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/blog"
+          element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <BlogPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/blog/:articleId"
+          element={
+            <Suspense fallback={<LoadingSpinner />}>
+              <BlogArticlePage />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </HashRouter>
   );
 }
 
