@@ -1,4 +1,5 @@
-import { ArrowDown, Video, Calendar, Stethoscope } from 'lucide-react';
+import { Video, Calendar, Stethoscope, BookOpen } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import AnimatedCounter from './AnimatedCounter';
 
 export default function Hero() {
@@ -30,7 +31,7 @@ export default function Hero() {
               Evidence-based, family-centred care from an experienced OT.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-12">
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2 bg-white text-teal-800 px-8 py-4 rounded-full font-semibold hover:bg-teal-50 shadow-lg"
@@ -45,6 +46,13 @@ export default function Hero() {
                 <Stethoscope size={20} />
                 Explore Services
               </a>
+              <Link
+                to="/blog"
+                className="inline-flex items-center justify-center gap-2 bg-teal-700/50 backdrop-blur-sm border border-teal-500/30 text-white px-8 py-4 rounded-full font-semibold hover:bg-teal-700/70"
+              >
+                <BookOpen size={20} />
+                Blog
+              </Link>
             </div>
 
             <div className="grid grid-cols-3 gap-6">
@@ -100,14 +108,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <a
-        href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white"
-        aria-label="Scroll down"
-      >
-        <ArrowDown size={24} />
-      </a>
     </section>
   );
 }
